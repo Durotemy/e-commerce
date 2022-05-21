@@ -1,0 +1,11 @@
+*{
+    margin-top:-6px;
+    padding:0px;
+}
+main{
+    min-height: 100vh;
+}
+.top{
+    margin-bottom:3rem;
+}
+
