@@ -1,26 +1,16 @@
 import { requirePropFactory } from "@material-ui/core";
 import express from "express";
-import asyncHandler from "express-async-handler";
+// import asyncHandler from "express-async-handler";
 const router = express.Router();
-import Product from "../models/productModel.js";
 
+import { getProductById, getProducts } from "../controllers/productControllers.js"
+// import {getProductById} from "../controllers/productControllers.js"
+// import {getProducts} from "../controllers/productControllers.js"
 // @ fetch all product;
 
-router.get('/', async (req, res) => {
-    const product = await Product.find({});
-    res.send(product);
-})
-//fetch @ product by id
-router.get('/:id', async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-        res.status(404);
-        throw new Error('Product not found')
-    }
-    if (req.params.id.length !== 24) {
-        res.send(`Error has occured here`)
-    }
-    res.json(product)
-})
-
+// router.router.get('/', getProducts)
+// //fetch @ product by id
+// router.router.get('/:id', getProductById)
+router.route('/').get(getProducts)
+router.route('/:id').get(getProductById)
 export default router;

@@ -5,7 +5,7 @@ import Message from "../components/Message.js";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
 
 import { addToCart, removeFromCart } from "../actions/cartAction.js";
-import { useParams,  useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const CartScreen = () => {
@@ -16,11 +16,11 @@ const CartScreen = () => {
 
     const qty = Number(searchParms.get("qty"));
 
-
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart;
-    console.log(cartItems)
+    
+
     useEffect(() => {
         if (productID) {
             dispatch(addToCart(productID, qty))
@@ -30,7 +30,7 @@ const CartScreen = () => {
         dispatch(removeFromCart(id))
     }
     const checkoutHandler = () => {
-        // console.log(" checkout")
+        
         navigate("/login?redirect=shipping")
     }
     return <Row>
